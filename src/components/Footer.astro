@@ -3,13 +3,18 @@ const today = new Date();
 ---
 
 <footer>
-	&copy; {today.getFullYear()} AIよくばり日記
+	<p class="site">&copy; {today.getFullYear()} AIよくばり日記</p>
+	<p class="note">運営: ジンとニックのボス(ボスは自称)</p>
 </footer>
 <style>
 	footer {
-		padding: 2em 1em 6em 1em;
-		background: linear-gradient(var(--gray-gradient)) no-repeat;
-		color: rgb(var(--gray));
+		padding: 2.5em 1em 4em 1em;
+		border-top: 1px solid var(--line);
+		color: var(--sub);
 		text-align: center;
+		font-size: 0.85em;
+	}
+	footer p {
+		margin: 0.2em 0;
 	}
 </style>
