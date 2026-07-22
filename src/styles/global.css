@@ -27,7 +27,13 @@ body {
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	background: var(--paper);
+	/* 肉球パターンを白でほぼ覆って、うっすら見える程度に */
+	background:
+		linear-gradient(rgba(253, 252, 247, 0.93), rgba(253, 252, 247, 0.93)),
+		url('/pattern-paw.png') repeat;
+	background-size:
+		auto,
+		340px;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	color: var(--ink);
