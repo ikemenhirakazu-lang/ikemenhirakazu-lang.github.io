@@ -3,4 +3,4 @@
 
 export const SITE_TITLE = 'AIブログ(仮)';
 export const SITE_DESCRIPTION =
-  '土木一筋・非IT・49歳。ゲームしかしてこなかったおじさんが、Claude Codeで何をどこまでできるのか試す実験ログ。';
+  '土木一筋30年近く・非IT・48歳。ゲームしかしてこなかったおじさんが、Claude Codeで何をどこまでできるのか試す実験ログ。';
