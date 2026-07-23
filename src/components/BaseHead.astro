@@ -33,6 +33,17 @@ const { title, description, image = FallbackImage } = Astro.props;
 />
 <meta name="generator" content={Astro.generator} />
 
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JZCGFYRZ14" is:inline></script>
+<script is:inline>
+	window.dataLayer = window.dataLayer || [];
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+	gtag('js', new Date());
+	gtag('config', 'G-JZCGFYRZ14');
+</script>
+
 <Font cssVariable="--font-atkinson" preload />
 
 <!-- 日本語Webフォント: 見出し用の丸ゴシックと本文用ゴシック -->
