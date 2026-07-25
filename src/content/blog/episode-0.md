@@ -3,6 +3,8 @@ title: '第0話: 48歳・土木一筋・非IT。ゲームしかしてこなか�
 description: '自己紹介を兼ねた第0話。なぜClaude Codeを始めたのか、今の自分に何ができて何ができないのか。'
 pubDate: '2026-07-22'
 draft: false
+series: main
+episode: 0
 ---
 
 今この文章、Claude Codeと一緒に書いています。

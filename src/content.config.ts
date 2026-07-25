@@ -16,6 +16,9 @@ const blog = defineCollection({
 			heroImage: z.optional(image()),
 			affiliate: z.boolean().default(false),
 			draft: z.boolean().default(false),
+			// シリーズ分類(一覧のフィルタ・並び順に使う)。main=本編 / diet=AI×運動しないダイエット
+			series: z.string().optional(),
+			episode: z.number().optional(),
 		}),
 });
 

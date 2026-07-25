@@ -7,9 +7,17 @@ import FormattedDate from '../../components/FormattedDate.astro';
 import Header from '../../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
+// 初期表示は「すべて・新しい順」。シリーズ選択時の並べ替えはクライアント側で行う。
 const posts = (await getCollection('blog'))
 	.filter((post) => !post.data.draft)
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// 左のシリーズ選択肢(key はフィルタ用、hash にも使う)
+const seriesTabs = [
+	{ key: 'all', label: 'すべて' },
+	{ key: 'main', label: '本編' },
+	{ key: 'diet', label: 'AI×運動しないダイエット' },
+];
 ---
 
 <!doctype html>
@@ -25,7 +33,46 @@ const posts = (await getCollection('blog'))
 				margin: 0;
 				font-size: 0.92em;
 			}
-			ul {
+			/* 一覧レイアウト: 左にシリーズ選択、右に記事 */
+			.blog-layout {
+				display: flex;
+				gap: 1.6rem;
+				align-items: flex-start;
+			}
+			.series-nav {
+				flex: 0 0 150px;
+				position: sticky;
+				top: 1em;
+				display: flex;
+				flex-direction: column;
+				gap: 0.4rem;
+			}
+			.series-nav a {
+				display: block;
+				padding: 0.5em 0.8em;
+				border-radius: 10px;
+				text-decoration: none;
+				color: var(--sub);
+				border: 1px solid transparent;
+				font-size: 0.95em;
+				line-height: 1.4;
+				transition: 0.15s ease;
+			}
+			.series-nav a:hover {
+				background: var(--safety-soft);
+				color: var(--ink);
+			}
+			.series-nav a.active {
+				background: var(--safety-soft);
+				color: var(--ink);
+				border-color: var(--safety);
+				font-weight: 700;
+			}
+			.post-list-wrap {
+				flex: 1 1 auto;
+				min-width: 0;
+			}
+			ul.post-list {
 				display: flex;
 				flex-direction: column;
 				gap: 1.2rem;
@@ -33,7 +80,7 @@ const posts = (await getCollection('blog'))
 				margin: 0;
 				padding: 0;
 			}
-			ul li a {
+			ul.post-list li a {
 				display: block;
 				background: var(--card);
 				border: 1px solid var(--line);
@@ -42,12 +89,12 @@ const posts = (await getCollection('blog'))
 				text-decoration: none;
 				transition: 0.15s ease;
 			}
-			ul li a:hover {
+			ul.post-list li a:hover {
 				transform: translateY(-2px);
 				box-shadow: var(--box-shadow);
 				border-color: var(--safety);
 			}
-			ul li img {
+			ul.post-list li img {
 				margin-bottom: 0.8rem;
 			}
 			.title {
@@ -61,8 +108,27 @@ const posts = (await getCollection('blog'))
 				color: var(--sub);
 				font-size: 0.85em;
 			}
-			ul li a:hover .title {
+			ul.post-list li a:hover .title {
 				color: var(--link);
+			}
+			/* スマホ: 左サイドではなく、上に横並びのチップ */
+			@media (max-width: 720px) {
+				.blog-layout {
+					flex-direction: column;
+					gap: 1rem;
+				}
+				.series-nav {
+					flex: none;
+					position: static;
+					flex-direction: row;
+					flex-wrap: wrap;
+					gap: 0.5rem;
+					width: 100%;
+				}
+				.series-nav a {
+					font-size: 0.9em;
+					border-color: var(--line);
+				}
 			}
 		</style>
 	</head>
@@ -72,27 +138,94 @@ const posts = (await getCollection('blog'))
 			<section>
 				<div class="page-title">
 					<h1>記事一覧</h1>
-					<p>挑戦の記録。新しい順に並んでいます。</p>
+					<p id="list-caption">挑戦の記録。新しい順に並んでいます。</p>
 				</div>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" />
-									)}
-									<h2 class="title">{post.data.title}</h2>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
+				<div class="blog-layout">
+					<nav class="series-nav" aria-label="シリーズで絞り込み">
+						{
+							seriesTabs.map((tab) => (
+								<a
+									href={`#${tab.key}`}
+									data-series={tab.key}
+									class={tab.key === 'all' ? 'active' : ''}
+								>
+									{tab.label}
 								</a>
-							</li>
-						))
-					}
-				</ul>
+							))
+						}
+					</nav>
+					<div class="post-list-wrap">
+						<ul class="post-list">
+							{
+								posts.map((post) => (
+									<li
+										data-series={post.data.series ?? 'main'}
+										data-episode={post.data.episode ?? 999}
+										data-date={post.data.pubDate.valueOf()}
+									>
+										<a href={`/blog/${post.id}/`}>
+											{post.data.heroImage && (
+												<Image width={720} height={360} src={post.data.heroImage} alt="" />
+											)}
+											<h2 class="title">{post.data.title}</h2>
+											<p class="date">
+												<FormattedDate date={post.data.pubDate} />
+											</p>
+										</a>
+									</li>
+								))
+							}
+						</ul>
+					</div>
+				</div>
 			</section>
 		</main>
 		<Footer />
 	</body>
 </html>
+
+<script>
+	// シリーズの絞り込み。JSが無くても「すべて(新しい順)」がそのまま見える。
+	const captions: Record<string, string> = {
+		all: '挑戦の記録。新しい順に並んでいます。',
+		main: '本編シリーズ。第0話から順に並んでいます。',
+		diet: 'AI×運動しないダイエット。第1話から順に並んでいます。',
+	};
+
+	const nav = document.querySelector('.series-nav');
+	const list = document.querySelector('ul.post-list') as HTMLUListElement | null;
+	const caption = document.getElementById('list-caption');
+
+	if (nav && list) {
+		const items = Array.from(list.querySelectorAll('li')) as HTMLLIElement[];
+		const links = Array.from(nav.querySelectorAll('a')) as HTMLAnchorElement[];
+
+		const num = (li: HTMLLIElement, key: string) => Number(li.dataset[key] ?? 0);
+
+		const apply = (series: string) => {
+			const active = ['main', 'diet'].includes(series) ? series : 'all';
+
+			links.forEach((a) => a.classList.toggle('active', a.dataset.series === active));
+			if (caption) caption.textContent = captions[active];
+
+			const visible = items.filter((li) => active === 'all' || li.dataset.series === active);
+			if (active === 'all') {
+				// 全体は新しい順(同日なら新しい話数が上)
+				visible.sort((a, b) => num(b, 'date') - num(a, 'date') || num(b, 'episode') - num(a, 'episode'));
+			} else {
+				// 単一シリーズは話数順(第0話→最新)で前後を明快に
+				visible.sort((a, b) => num(a, 'episode') - num(b, 'episode'));
+			}
+
+			items.forEach((li) => (li.style.display = 'none'));
+			visible.forEach((li) => {
+				li.style.display = '';
+				list.appendChild(li);
+			});
+		};
+
+		const fromHash = () => location.hash.replace('#', '') || 'all';
+		apply(fromHash());
+		window.addEventListener('hashchange', () => apply(fromHash()));
+	}
+</script>
