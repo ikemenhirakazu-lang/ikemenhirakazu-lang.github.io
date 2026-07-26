@@ -2,6 +2,7 @@
 title: '第1話: 18万円のMacBookをやめて、13万円のLenovoでAI生活を始めた話'
 description: 'MacBookが4万円値上がりしたのにも気づかず「安いモデルが売り切れたのかな」と思い込んだ48歳が、従量課金も知らないままLenovoにたどり着くまでの記録。'
 pubDate: '2026-07-23'
+category: getting-started
 series: main
 episode: 1
 ---

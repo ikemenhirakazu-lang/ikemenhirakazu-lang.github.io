@@ -8,6 +8,7 @@
 - **公開する記事は完成品ルートに乗せる**: Fable 5で草稿 → `AIブログ/docs/記事の型.md` の該当型に沿う → ボスと推敲を数往復 → 承認後に公開。たたき台のまま公開しない。
 - **AIの相棒の呼び名=クロさん**(ダイエットの「ミルさん」とは別。混同しない)。
 - 記事は `src/content/blog/**/*.md`(frontmatter 必須= title / description / pubDate、任意で `draft` / `affiliate`)。ダイエットシリーズは `src/content/blog/diet/`。ファイル名がURLのslugになる。
+- **軸が2本ある。混同しない。** `series`(読む順番= main / diet。`episode` と対で使い、記事一覧の絞り込みに効く)と `category`(テーマ= `src/consts.ts` の `CATEGORIES`。`/blog/category/<slug>/` のページになる)。**新しい記事には必ず `category` を書く**(未設定でもビルドは通るが、カテゴリページから漏れる)。カテゴリを増やすときは `consts.ts` と `content.config.ts` の両方に足す。あとから減らすのは難しいので、記事が無いカテゴリは作らない。
 - ボスはターミナル操作に不慣れ。**git操作は代行**し、本人操作(ブラウザ認証等)だけ案内する。
 
 ## Development

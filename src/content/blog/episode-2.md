@@ -2,6 +2,7 @@
 title: '第2話: 「ドメインって何?」の48歳が、その日のうちにブログを公開した話'
 description: 'アカウントの作り方すら怪しかった非ITのおじさんが、Claude Codeと二人三脚で、朝は「ドメインって何」の状態から夜には独自ドメインのブログを公開するまでの一日の記録。'
 pubDate: '2026-07-25'
+category: getting-started
 series: main
 episode: 2
 ---

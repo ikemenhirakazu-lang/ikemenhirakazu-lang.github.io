@@ -5,7 +5,7 @@ import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import Header from '../../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import { CATEGORIES, SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
 // 初期表示は「すべて・新しい順」。シリーズ選択時の並べ替えはクライアント側で行う。
 const posts = (await getCollection('blog'))
@@ -111,6 +111,39 @@ const seriesTabs = [
 			ul.post-list li a:hover .title {
 				color: var(--link);
 			}
+			/* テーマ別カテゴリ(読む順番のシリーズとは別の軸) */
+			.theme-nav {
+				margin-top: 2.5rem;
+				padding-top: 1.2rem;
+				border-top: 1px solid var(--line);
+			}
+			.theme-nav p {
+				color: var(--sub);
+				font-size: 0.9em;
+				margin: 0 0 0.6rem 0;
+			}
+			.theme-nav ul {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.6rem;
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+			.theme-nav a {
+				display: inline-block;
+				padding: 0.4em 0.9em;
+				border: 1px solid var(--line);
+				border-radius: 999px;
+				text-decoration: none;
+				color: var(--sub);
+				font-size: 0.9em;
+			}
+			.theme-nav a:hover {
+				background: var(--safety-soft);
+				color: var(--ink);
+				border-color: var(--safety);
+			}
 			/* スマホ: 左サイドではなく、上に横並びのチップ */
 			@media (max-width: 720px) {
 				.blog-layout {
@@ -178,6 +211,18 @@ const seriesTabs = [
 						</ul>
 					</div>
 				</div>
+				<nav class="theme-nav" aria-label="テーマから探す">
+					<p>テーマから探す</p>
+					<ul>
+						{
+							CATEGORIES.map((c) => (
+								<li>
+									<a href={`/blog/category/${c.slug}/`}>{c.label}</a>
+								</li>
+							))
+						}
+					</ul>
+				</nav>
 			</section>
 		</main>
 		<Footer />

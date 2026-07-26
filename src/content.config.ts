@@ -19,6 +19,9 @@ const blog = defineCollection({
 			// シリーズ分類(一覧のフィルタ・並び順に使う)。main=本編 / diet=AI×運動しないダイエット
 			series: z.string().optional(),
 			episode: z.number().optional(),
+			// テーマ別カテゴリ(`src/consts.ts` の CATEGORIES と一致させる)。
+			// 綴りを間違えたらビルドで落ちる。未設定でも通るが、カテゴリページには出てこない。
+			category: z.enum(['getting-started', 'tsukutta', 'diet']).optional(),
 		}),
 });
 
