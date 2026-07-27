@@ -1,7 +1,8 @@
 ---
 // 吹き出し。AIとのやりとりや、その場の一言を見せるのに使う。
 // who: kuro = クロさん(ブログのAI相棒) / mil = ミルさん(ダイエット) / boss = ボス
-// 顔の画像はまだ無いので、当面は頭文字の丸で出す。画像ができたら icon に渡せば差し替わる。
+// 顔の画像がある人は preset の icon に入れておく(記事側で毎回渡さなくていい)。
+// まだ絵が無い人は頭文字の丸で出る。icon を渡せばその場で差し替わる。
 interface Props {
 	who?: 'kuro' | 'mil' | 'boss';
 	name?: string;
@@ -11,19 +12,20 @@ interface Props {
 const { who = 'kuro', name, icon } = Astro.props;
 
 const preset = {
-	kuro: { label: 'クロさん', initial: 'ク', side: 'left' },
-	mil: { label: 'ミルさん', initial: 'ミ', side: 'left' },
-	boss: { label: 'ボス', initial: 'ボ', side: 'right' },
-};
-const { label, initial, side } = preset[who];
+	kuro: { label: 'クロさん', initial: 'ク', side: 'left', icon: undefined },
+	mil: { label: 'ミルさん', initial: 'ミ', side: 'left', icon: '/blog-img/char/mil.png' },
+	boss: { label: 'ボス', initial: 'ボ', side: 'right', icon: '/blog-img/char/boss.png' },
+} as const;
+const { label, initial, side, icon: presetIcon } = preset[who];
 const speaker = name ?? label;
+const face = icon ?? presetIcon;
 ---
 
 <div class:list={['balloon', who, side]}>
 	<div class="face">
 		{
-			icon ? (
-				<img src={icon} alt="" width="52" height="52" />
+			face ? (
+				<img src={face} alt="" width="52" height="52" />
 			) : (
 				<span class="initial" aria-hidden="true">
 					{initial}
