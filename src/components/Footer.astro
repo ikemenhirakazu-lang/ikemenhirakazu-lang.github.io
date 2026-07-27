@@ -3,6 +3,12 @@ const today = new Date();
 ---
 
 <footer>
+	<nav class="footer-links" aria-label="サイト情報">
+		<a href="/about/">プロフィール</a>
+		<a href="/contact/">お問い合わせ</a>
+		<a href="/privacy-policy/">プライバシーポリシー</a>
+		<a href="/sitemap-index.xml">サイトマップ</a>
+	</nav>
 	<p class="site">&copy; {today.getFullYear()} AIよくばり日記</p>
 	<p class="note">運営: ジンとニックのボス(ボスは自称)</p>
 </footer>
@@ -16,5 +22,22 @@ const today = new Date();
 	}
 	footer p {
 		margin: 0.2em 0;
+	}
+	.footer-links {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.4em 1.2em;
+		margin-bottom: 1.2em;
+	}
+	.footer-links a {
+		color: var(--sub);
+		text-decoration: none;
+		border-bottom: 1px solid transparent;
+		padding: 0.2em 0;
+	}
+	.footer-links a:hover {
+		color: var(--link);
+		border-bottom-color: var(--safety);
 	}
 </style>
