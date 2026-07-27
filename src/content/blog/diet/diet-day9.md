@@ -57,17 +57,37 @@ episode: 3
 
 昼の1,120kcalと合わせて、この日の合計は2,378kcal。目標2,647kcalに対しての着地だった。ミルさんの事前予想は2,400kcal。実際との差は22kcalで、ほぼ一致していた。
 
+| いつ | 食べたもの | カロリー |
+|---|---|---|
+| 朝 | 抜き(起きたのが10時半過ぎ) | 0 kcal |
+| 昼 | 若どりの山賊焼き / 味付つぶ貝(ガーリック) / ご飯 / 生卵 / アスパラガス＋マヨネーズタイプ | 1,120 kcal |
+| 夜 | 濃厚な牛肉ルーのカレー ＋ 茹でエビ ＋ 鶏むね肉 / ご飯400g | 1,172 kcal |
+| 帰宅後 | バナナ 1本(ミルさんの指示) | 86 kcal |
+| **合計** | **目標2,647kcalに対して269kcal下** | **2,378 kcal** |
+
 ## 一番の収穫は、PFCが3つとも目標に収まったこと
 
 数字だけ見ても悪くない着地だったが、それ以上に目を引いたのがPFCバランスだった。
 
-| 栄養素 | この日 | 割合 | 目標レンジ |
-|---|---|---|---|
-| タンパク質 | 115.7g | 19.5% | 13〜20% |
-| 脂質 | 55.2g | 20.9% | 20〜25% |
-| 糖質(ご飯など) | 346.2g | 58.2% | 50〜60% |
+<div class="pfc">
+  <div class="pfc-row in" style="--lo:13;--hi:20;--val:19.5">
+    <p class="pfc-head"><span>タンパク質</span><span class="pfc-val">115.7g</span></p>
+    <div class="pfc-bar"><span class="pfc-range"></span><span class="pfc-mark"></span></div>
+    <p class="pfc-foot"><span>19.5%（目標 13〜20%）</span><span class="pfc-judge">収まった</span></p>
+  </div>
+  <div class="pfc-row in" style="--lo:20;--hi:25;--val:20.9">
+    <p class="pfc-head"><span>脂質</span><span class="pfc-val">55.2g</span></p>
+    <div class="pfc-bar"><span class="pfc-range"></span><span class="pfc-mark"></span></div>
+    <p class="pfc-foot"><span>20.9%（目標 20〜25%）</span><span class="pfc-judge">収まった</span></p>
+  </div>
+  <div class="pfc-row in" style="--lo:50;--hi:60;--val:58.2">
+    <p class="pfc-head"><span>糖質(ご飯など)</span><span class="pfc-val">346.2g</span></p>
+    <div class="pfc-bar"><span class="pfc-range"></span><span class="pfc-mark"></span></div>
+    <p class="pfc-foot"><span>58.2%（目標 50〜60%）</span><span class="pfc-judge">収まった</span></p>
+  </div>
+</div>
 
-3つとも、ぴたりとレンジに収まっていた。前日は脂質32%・タンパク質26%・糖質41%と、3つとも外れていたのと対照的だ。濃厚な牛肉カレーの大盛りに、トッピングを2つも乗せた日にこの結果になるとは、正直予想していなかった。
+黄色い帯が目標の範囲、黒い針がこの日の実績だ。3つとも、ぴたりとレンジに収まっていた。前日は脂質32%・タンパク質26%・糖質41%と、3つとも外れていたのと対照的だ。濃厚な牛肉カレーの大盛りに、トッピングを2つも乗せた日にこの結果になるとは、正直予想していなかった。
 
 我慢して胸肉だけの淡白な食事にしていたら、こうはならなかったかもしれない。エビを食べたいという僕の希望が、たまたまその日いちばんいい選択と重なっていたのは運が良かったにしても、そこにチキンという「足りないものを足す」一手を重ねたことで、数字が整った。出かける前に、メニューの実態を伝えるたびにアドバイスが組み替わっていく感覚は、本やネットの情報を事前に読んでおくのとはまったく違うものだった。
 

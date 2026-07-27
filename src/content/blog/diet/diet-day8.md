@@ -53,12 +53,34 @@ episode: 2
 
 食べたものをアプリに入れた内訳は、こうだった。目標の数字は、体重をもとにアプリが出してくれる目安だ。
 
-| 栄養素 | 目標(目安) | この日 |
-|---|---|---|
-| カロリー | 2,618kcal | 2,600kcal |
-| タンパク質 | 約164g | 169.1g |
-| 脂質 | 約73g | 93.2g |
-| 糖質(ご飯など) | 約327g | 264.4g |
+| 栄養素 | 目標(目安) | この日 | 判定 |
+|---|---|---|---|
+| カロリー | 2,618kcal | 2,600kcal | ほぼぴったり |
+| タンパク質 | 約164g | 169.1g | ほぼ目標どおり |
+| 脂質 | 約73g | 93.2g | **約20gオーバー** |
+| 糖質(ご飯など) | 約327g | 264.4g | **約60g足りない** |
+
+同じ数字を、目標の範囲に対してどこにいたのかで見ると、外し方がはっきりする。
+
+<div class="pfc">
+  <div class="pfc-row out" style="--lo:13;--hi:20;--val:26.3">
+    <p class="pfc-head"><span>タンパク質</span><span class="pfc-val">169.1g</span></p>
+    <div class="pfc-bar"><span class="pfc-range"></span><span class="pfc-mark"></span></div>
+    <p class="pfc-foot"><span>26.3%（目標 13〜20%）</span><span class="pfc-judge">多い</span></p>
+  </div>
+  <div class="pfc-row out" style="--lo:20;--hi:25;--val:32.6">
+    <p class="pfc-head"><span>脂質</span><span class="pfc-val">93.2g</span></p>
+    <div class="pfc-bar"><span class="pfc-range"></span><span class="pfc-mark"></span></div>
+    <p class="pfc-foot"><span>32.6%（目標 20〜25%）</span><span class="pfc-judge">オーバー</span></p>
+  </div>
+  <div class="pfc-row out" style="--lo:50;--hi:60;--val:41.1">
+    <p class="pfc-head"><span>糖質(ご飯など)</span><span class="pfc-val">264.4g</span></p>
+    <div class="pfc-bar"><span class="pfc-range"></span><span class="pfc-mark"></span></div>
+    <p class="pfc-foot"><span>41.1%（目標 50〜60%）</span><span class="pfc-judge">足りない</span></p>
+  </div>
+</div>
+
+黄色い帯が目標の範囲、赤い針がこの日の実績だ。<strong class="red">3つとも、帯から外れている。</strong>
 
 カロリーはほぼ目標どおりで、タンパク質もおおむね良好だった。脂質は目標より約20gオーバーしていて、これが「脂質を盛れとは言ってない」の正体――揚げ物三品が効いた。逆に糖質(ご飯など)は目標に約60g届いておらず、「もっと食べて」と言われた通り、実はご飯のほうはまだ足りていなかった。数字にすると、どこを外したのかが一目で分かる。
 

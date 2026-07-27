@@ -348,6 +348,139 @@ input {
 table {
 	width: 100%;
 }
+/* ── 表 ────────────────────────────────────────
+   マークダウンの素の表がそのまま見やすくなるようにする(記事側は書き方を変えなくていい)。
+   横に長い表はスマホでははみ出すので、.prose table は囲みごと横スクロールさせる。 */
+.prose table {
+	display: block;
+	overflow-x: auto;
+	margin: 2em 0;
+	border-collapse: collapse;
+	font-size: 0.94em;
+	line-height: 1.8;
+}
+.prose table thead th {
+	background: #2b2f36;
+	color: #fff;
+	font-family: var(--font-display);
+	font-weight: 800;
+	white-space: nowrap;
+}
+/* 一番左(項目名)と一番右(数字)は折り返さない。真ん中の長い説明だけ折り返す。
+   こうしないと、大事な数字の列が画面の外に押し出される。 */
+.prose table td:first-child,
+.prose table td:last-child {
+	white-space: nowrap;
+}
+.prose table th,
+.prose table td {
+	padding: 0.6em 0.9em;
+	border: 1px solid var(--line);
+	text-align: left;
+}
+.prose table tbody tr:nth-child(odd) {
+	background: var(--card);
+}
+.prose table tbody tr:nth-child(even) {
+	background: #faf8f2;
+}
+/* 合計行など、強調したい行は行頭のセルを **太字** にすると帯が付く */
+.prose table tbody tr:has(> td:first-child > strong) {
+	background: var(--safety-soft);
+}
+
+/* ── PFCメーター ───────────────────────────────
+   「目標の範囲に収まったか」を一目で見せる。数字の表より、位置で分かるほうが早い。
+   書き方(.md でもそのまま使える。--lo/--hi/--val は % を付けない数字):
+     <div class="pfc">
+       <div class="pfc-row in" style="--lo:13;--hi:20;--val:19.5">
+         <p class="pfc-head"><span>タンパク質</span><span class="pfc-val">115.7g</span></p>
+         <div class="pfc-bar"><span class="pfc-range"></span><span class="pfc-mark"></span></div>
+         <p class="pfc-foot"><span>19.5%（目標 13〜20%）</span><span class="pfc-judge">収まった</span></p>
+       </div>
+     </div>
+   目標を外した行は class="pfc-row out"、判定の文字を「オーバー」等にする。 */
+.pfc {
+	margin: 2em 0;
+}
+.pfc-row {
+	margin-bottom: 0.7em;
+	padding: 0.9em 1.1em 0.8em;
+	background: var(--card);
+	border: 1px solid var(--line);
+	border-radius: 10px;
+}
+.pfc-row:last-child {
+	margin-bottom: 0;
+}
+.pfc-head {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 0.6em;
+	margin: 0 0 0.6em;
+	font-family: var(--font-display);
+	font-weight: 800;
+	line-height: 1.4;
+}
+.pfc-val {
+	font-size: 1.08em;
+}
+.pfc-bar {
+	position: relative;
+	height: 14px;
+	border-radius: 7px;
+	background: #f1eee5;
+}
+/* 目標レンジの帯 */
+.pfc-range {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	border-radius: 7px;
+	background: var(--safety-soft);
+	border: 1px solid var(--safety);
+	left: calc(var(--lo) / var(--scale, 70) * 100%);
+	width: calc((var(--hi) - var(--lo)) / var(--scale, 70) * 100%);
+}
+/* その日の実績を指す針 */
+.pfc-mark {
+	position: absolute;
+	top: -5px;
+	left: calc(var(--val) / var(--scale, 70) * 100%);
+	width: 6px;
+	height: 24px;
+	margin-left: -3px;
+	border-radius: 3px;
+	background: #2b2f36;
+}
+.pfc-foot {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.6em;
+	margin: 0.6em 0 0;
+	font-size: 0.82em;
+	line-height: 1.6;
+	color: var(--sub);
+}
+.pfc-judge {
+	flex-shrink: 0;
+	padding: 0.1em 0.7em;
+	border-radius: 999px;
+	font-weight: 700;
+}
+.pfc-row.in .pfc-judge {
+	background: #dcefdc;
+	color: #2c6b2c;
+}
+.pfc-row.out .pfc-judge {
+	background: #fadbd7;
+	color: #a3372c;
+}
+.pfc-row.out .pfc-mark {
+	background: #cf3a2e;
+}
 img {
 	max-width: 100%;
 	height: auto;
