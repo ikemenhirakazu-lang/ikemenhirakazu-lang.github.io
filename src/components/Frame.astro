@@ -1,0 +1,18 @@
+---
+// 囲み枠。箇条書きを囲んで「ここだけ読めば分かる」を作る。
+// 見た目は global.css の .frame 側で持つ(.md から生HTMLで書くときと同じ見た目にするため)。
+// 使い方(.mdx):
+//   <Frame title="この記事で分かること">
+//   - あれ
+//   - これ
+//   </Frame>
+interface Props {
+	title?: string;
+}
+const { title } = Astro.props;
+---
+
+<div class="frame">
+	{title && <p class="frame-title">{title}</p>}
+	<slot />
+</div>

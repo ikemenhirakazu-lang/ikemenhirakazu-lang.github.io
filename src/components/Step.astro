@@ -1,0 +1,98 @@
+---
+// 段取り図の1工程。<Steps> の中に並べる。
+// title = 何をするか / note = 費用や時間などの補足(任意)
+interface Props {
+	title: string;
+	note?: string;
+}
+const { title, note } = Astro.props;
+---
+
+<li class="step">
+	<p class="head">
+		<span class="name">{title}</span>
+		{note && <span class="badge">{note}</span>}
+	</p>
+	<div class="body"><slot /></div>
+</li>
+
+<style>
+	.step {
+		position: relative;
+		counter-increment: step;
+		margin: 0 0 0.7em;
+		padding: 0.85em 1.1em;
+		background: var(--card);
+		border: 1px solid var(--line);
+		border-radius: 10px;
+	}
+	.step:last-child {
+		margin-bottom: 0;
+	}
+	/* 番号の丸。縦線の上に重ねるので背景を塗る */
+	.step::before {
+		content: counter(step);
+		position: absolute;
+		left: -2.6em;
+		top: 0.75em;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.2em;
+		height: 2.2em;
+		box-sizing: border-box;
+		border-radius: 50%;
+		background: var(--safety);
+		border: 2px solid var(--paper);
+		color: #2b2f36;
+		font-family: var(--font-display);
+		font-weight: 800;
+		font-size: 0.9em;
+		line-height: 1;
+	}
+	.head {
+		display: flex;
+		align-items: baseline;
+		flex-wrap: wrap;
+		gap: 0.5em;
+		margin: 0;
+	}
+	.name {
+		font-family: var(--font-display);
+		font-weight: 800;
+		font-size: 1.02em;
+		line-height: 1.5;
+	}
+	.badge {
+		flex-shrink: 0;
+		padding: 0.1em 0.6em;
+		border-radius: 999px;
+		background: var(--safety-soft);
+		color: #6b5200;
+		font-size: 0.75em;
+		white-space: nowrap;
+	}
+	.body {
+		margin-top: 0.35em;
+		font-size: 0.94em;
+		color: var(--sub);
+		line-height: 1.75;
+	}
+	.body:empty {
+		display: none;
+	}
+	.body :global(> :first-child) {
+		margin-top: 0;
+	}
+	.body :global(> :last-child) {
+		margin-bottom: 0;
+	}
+	@media (max-width: 520px) {
+		.step::before {
+			left: -2.2em;
+			width: 1.9em;
+			height: 1.9em;
+			font-size: 0.85em;
+		}
+	}
+</style>

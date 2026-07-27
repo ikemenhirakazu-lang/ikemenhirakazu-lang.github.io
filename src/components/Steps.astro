@@ -1,0 +1,77 @@
+---
+// 段取り図。手順を上から順に並べる。中に <Step> を並べて使う。
+// 番号は CSS の counter で振るので、順番を入れ替えても勝手に振り直る。
+interface Props {
+	title?: string;
+	note?: string;
+}
+const { title, note } = Astro.props;
+---
+
+<div class="steps-wrap">
+	{
+		title && (
+			<p class="steps-title">
+				<span class="tape" aria-hidden="true" />
+				{title}
+			</p>
+		)
+	}
+	<ol class="steps">
+		<slot />
+	</ol>
+	{note && <p class="steps-note">{note}</p>}
+</div>
+
+<style>
+	.steps-wrap {
+		margin: 2.2em 0;
+	}
+	.steps-title {
+		display: flex;
+		align-items: center;
+		gap: 0.55em;
+		margin: 0 0 0.9em;
+		font-family: var(--font-display);
+		font-weight: 800;
+		font-size: 1.05em;
+		line-height: 1.4;
+	}
+	.tape {
+		flex-shrink: 0;
+		width: 22px;
+		height: 6px;
+		border-radius: 2px;
+		background: repeating-linear-gradient(-45deg, #2b2f36 0 5px, var(--safety) 5px 10px);
+	}
+	.steps {
+		position: relative;
+		margin: 0;
+		padding: 0 0 0 2.6em;
+		list-style: none;
+		counter-reset: step;
+	}
+	/* 工程をつなぐ縦線。丸の中心(左から 2.6em - 1.1em)に合わせる */
+	.steps::before {
+		content: '';
+		position: absolute;
+		left: 1.5em;
+		top: 0.6em;
+		bottom: 0.6em;
+		width: 2px;
+		background: var(--line);
+	}
+	.steps-note {
+		margin: 0.9em 0 0;
+		font-size: 0.85em;
+		color: var(--sub);
+	}
+	@media (max-width: 520px) {
+		.steps {
+			padding-left: 2.2em;
+		}
+		.steps::before {
+			left: 1.2em;
+		}
+	}
+</style>
