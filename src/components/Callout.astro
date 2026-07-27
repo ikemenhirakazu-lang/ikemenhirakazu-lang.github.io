@@ -1,0 +1,84 @@
+---
+// 囲みボックス。記事の中で「ここだけは読んでほしい」所に使う。
+// type: wakaru = この記事でわかること(記事の冒頭) / point = ポイント / chui = 注意
+// title を渡せば見出しを差し替えられる。
+interface Props {
+	type?: 'wakaru' | 'point' | 'chui';
+	title?: string;
+}
+
+const { type = 'point', title } = Astro.props;
+
+const preset = {
+	wakaru: { label: 'この記事でわかること', mark: '✓' },
+	point: { label: 'ここがポイント', mark: '!' },
+	chui: { label: '注意', mark: '!' },
+};
+const { label, mark } = preset[type];
+const heading = title ?? label;
+---
+
+<aside class:list={['callout', type]}>
+	<p class="callout-title"><span class="mark" aria-hidden="true">{mark}</span>{heading}</p>
+	<div class="callout-body">
+		<slot />
+	</div>
+</aside>
+
+<style>
+	.callout {
+		margin: 2em 0;
+		padding: 1.1em 1.3em;
+		border: 1px solid var(--line);
+		border-left: 6px solid var(--safety);
+		border-radius: 8px;
+		background: var(--safety-soft);
+	}
+	.callout.chui {
+		border-left-color: #d9534f;
+		background: #fdf1f0;
+	}
+	.callout.wakaru {
+		background: var(--card);
+	}
+	.callout-title {
+		display: flex;
+		align-items: center;
+		gap: 0.5em;
+		margin: 0 0 0.6em;
+		font-family: var(--font-display);
+		font-weight: 800;
+		font-size: 1em;
+	}
+	.mark {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.5em;
+		height: 1.5em;
+		border-radius: 50%;
+		background: var(--safety);
+		color: #2b2f36;
+		font-size: 0.8em;
+		flex-shrink: 0;
+	}
+	.chui .mark {
+		background: #d9534f;
+		color: #fff;
+	}
+	/* 中身の余白を詰める(箇条書きを入れることが多いので) */
+	.callout-body :global(> :first-child) {
+		margin-top: 0;
+	}
+	.callout-body :global(> :last-child) {
+		margin-bottom: 0;
+	}
+	.callout-body :global(ul),
+	.callout-body :global(ol) {
+		padding-left: 1.3em;
+		margin: 0.4em 0;
+	}
+	.callout-body :global(li) {
+		margin: 0.3em 0;
+	}
+</style>

@@ -1,0 +1,109 @@
+---
+// 記事の目次。render() が返す headings をそのまま受け取る。
+// H2 を軸に、H3 はぶら下げて出す。見出しが2つ未満なら何も出さない。
+interface Heading {
+	depth: number;
+	slug: string;
+	text: string;
+}
+interface Props {
+	headings?: Heading[];
+}
+
+// 固定ページ(プロフィール等)も同じレイアウトを使うので、渡されない場合に耐えるようにしておく
+const { headings = [] } = Astro.props;
+const items = headings.filter((h) => h.depth === 2 || h.depth === 3);
+const show = items.filter((h) => h.depth === 2).length >= 2;
+---
+
+{
+	show && (
+		<details class="toc" open>
+			<summary>目次</summary>
+			<ol>
+				{items.map((h) => (
+					<li class={h.depth === 3 ? 'sub' : ''}>
+						<a href={`#${h.slug}`}>{h.text}</a>
+					</li>
+				))}
+			</ol>
+		</details>
+	)
+}
+
+<style>
+	.toc {
+		margin: 2em 0;
+		padding: 1em 1.2em;
+		background: var(--card);
+		border: 1px solid var(--line);
+		border-radius: 10px;
+		box-shadow: var(--box-shadow);
+	}
+	summary {
+		font-family: var(--font-display);
+		font-weight: 800;
+		font-size: 1.02em;
+		cursor: pointer;
+		list-style: none;
+		display: flex;
+		align-items: center;
+		gap: 0.5em;
+	}
+	summary::-webkit-details-marker {
+		display: none;
+	}
+	/* 現場の安全テープを短く一本、目次の印として */
+	summary::before {
+		content: '';
+		width: 22px;
+		height: 6px;
+		border-radius: 2px;
+		background: repeating-linear-gradient(-45deg, #2b2f36 0 5px, var(--safety) 5px 10px);
+		flex-shrink: 0;
+	}
+	summary::after {
+		content: '開閉';
+		margin-left: auto;
+		color: var(--sub);
+		font-size: 0.72em;
+		font-weight: 400;
+		font-family: var(--font-body);
+	}
+	ol {
+		margin: 0.9em 0 0.2em;
+		padding: 0;
+		list-style: none;
+		counter-reset: toc;
+		font-size: 0.94em;
+	}
+	li {
+		counter-increment: toc;
+		margin: 0.45em 0;
+		line-height: 1.6;
+	}
+	li::before {
+		content: counter(toc) '.';
+		color: var(--sub);
+		margin-right: 0.45em;
+		font-variant-numeric: tabular-nums;
+	}
+	li.sub {
+		margin-left: 1.4em;
+		font-size: 0.94em;
+		/* 小見出しは番号を消費しない(H2 の通し番号がずれるため) */
+		counter-increment: none;
+	}
+	li.sub::before {
+		content: '—';
+	}
+	a {
+		color: var(--ink);
+		text-decoration: none;
+		border-bottom: 1px solid transparent;
+	}
+	a:hover {
+		color: var(--link);
+		border-bottom-color: var(--safety);
+	}
+</style>

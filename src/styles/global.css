@@ -78,6 +78,16 @@ strong,
 b {
 	font-weight: 700;
 }
+/* マーカー。読ませたい一行だけに使う(引きすぎると効かなくなる)。
+   記事側では <mark>ここ</mark> / <mark class="blue">ここ</mark> と書く。 */
+mark {
+	background: linear-gradient(transparent 42%, var(--safety-soft) 42%);
+	color: inherit;
+	padding: 0 0.1em;
+}
+mark.blue {
+	background: linear-gradient(transparent 42%, #d9ecf7 42%);
+}
 a {
 	color: var(--link);
 	text-decoration-thickness: 1px;
