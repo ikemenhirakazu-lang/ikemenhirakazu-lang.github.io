@@ -247,6 +247,19 @@ p {
 	margin-right: auto;
 }
 
+/* ── 図解 ────────────────────────────────────
+   本文中の説明図。Markdown の ![alt](../../assets/blog/xxx/01-yyy.png) で書くと
+   Astro が webp に変換してくれるので、こちらは見た目だけを整える。
+   図の中に見出しと補足が入っているので、キャプションは付けない。 */
+.prose p > img {
+	display: block;
+	width: 100%;
+	height: auto;
+	margin: 2em 0;
+	border: 1px solid var(--line);
+	border-radius: 10px;
+}
+
 /* ── 次の記事へ ────────────────────────────────
    前編の締めに置く「後編へ続く」。大きく、押せると分かる形にする。
    書き方(.md でもそのまま使える):

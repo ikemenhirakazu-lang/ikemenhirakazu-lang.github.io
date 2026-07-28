@@ -68,7 +68,8 @@ const articleLd = {
 
 <html lang="ja">
 	<head>
-		<BaseHead title={title} description={description} />
+		<!-- アイキャッチがある記事は、SNSに出る画像もそれにする(無い記事はサイト共通のogp.png) -->
+		<BaseHead title={title} description={description} image={heroImage} />
 		{
 			isPost && (
 				<Fragment>
@@ -204,7 +205,8 @@ const articleLd = {
 			}
 			<article>
 				<div class="hero-image">
-					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
+					{/* アイキャッチは 1200×630。比率を崩さないよう高さもその割合で指定する */}
+				{heroImage && <Image width={1020} height={536} src={heroImage} alt="" />}
 				</div>
 				<div class="prose">
 					<div class="title">
