@@ -5,7 +5,7 @@ import HeaderLink from './HeaderLink.astro';
 
 <header>
 	<nav>
-		<h2>
+		<div class="site-name">
 			<a href="/">
 				<svg
 					class="logo-paw"
@@ -24,7 +24,7 @@ import HeaderLink from './HeaderLink.astro';
 				</svg>
 				{SITE_TITLE}
 			</a>
-		</h2>
+		</div>
 		<div class="internal-links">
 			<HeaderLink href="/">ホーム</HeaderLink>
 			<HeaderLink href="/blog">ブログ</HeaderLink>
@@ -57,12 +57,12 @@ import HeaderLink from './HeaderLink.astro';
 			var(--safety) 10px 20px
 		);
 	}
-	h2 {
+	.site-name {
 		margin: 0;
 		font-size: 1.15em;
 		white-space: nowrap;
 	}
-	h2 a {
+	.site-name a {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.35em;

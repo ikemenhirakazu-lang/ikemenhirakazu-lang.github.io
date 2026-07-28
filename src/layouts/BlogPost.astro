@@ -16,11 +16,75 @@ type Props = CollectionEntry<'blog'>['data'] & {
 
 const { title, description, pubDate, updatedDate, heroImage, affiliate, category, headings } =
 	Astro.props;
+
+// category があるものだけ「記事」とみなす。固定ページ(プロフィール等)は対象外。
+const isPost = Boolean(category);
+const site = Astro.site!;
+const pageUrl = new URL(Astro.url.pathname, site).href;
+const iso = (d: Date) => new Date(d).toISOString();
+
+// パンくず: ホーム > ブログ > カテゴリ > 記事タイトル
+const crumbs = isPost
+	? [
+			{ name: 'ホーム', url: new URL('/', site).href },
+			{ name: 'ブログ', url: new URL('/blog/', site).href },
+			{ name: categoryLabel(category!), url: new URL(`/blog/category/${category}/`, site).href },
+			{ name: title, url: pageUrl },
+		]
+	: [];
+
+const breadcrumbLd = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: crumbs.map((c, i) => ({
+		'@type': 'ListItem',
+		position: i + 1,
+		name: c.name,
+		item: c.url,
+	})),
+};
+
+const articleLd = {
+	'@context': 'https://schema.org',
+	'@type': 'BlogPosting',
+	headline: title,
+	description,
+	datePublished: iso(pubDate),
+	dateModified: iso(updatedDate ?? pubDate),
+	inLanguage: 'ja',
+	mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+	author: {
+		'@type': 'Person',
+		name: 'ジンとニックのボス',
+		url: new URL('/about/', site).href,
+	},
+	publisher: {
+		'@type': 'Organization',
+		name: 'AIよくばり日記',
+		url: site.href,
+	},
+};
 ---
 
 <html lang="ja">
 	<head>
 		<BaseHead title={title} description={description} />
+		{
+			isPost && (
+				<Fragment>
+					<script
+						type="application/ld+json"
+						is:inline
+						set:html={JSON.stringify(articleLd)}
+					/>
+					<script
+						type="application/ld+json"
+						is:inline
+						set:html={JSON.stringify(breadcrumbLd)}
+					/>
+				</Fragment>
+			)
+		}
 		<style>
 			main {
 				width: calc(100% - 2em);
@@ -29,6 +93,47 @@ const { title, description, pubDate, updatedDate, heroImage, affiliate, category
 			}
 			.hero-image {
 				width: 100%;
+			}
+			/* パンくず。読者の現在地と、検索エンジンへのサイト構造の両方に効く */
+			.breadcrumb {
+				width: 720px;
+				max-width: calc(100% - 2em);
+				margin: 0 auto;
+				padding: 1em 1em 0;
+				font-size: 0.82em;
+				color: var(--sub);
+			}
+			.breadcrumb ol {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.2em 0.5em;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				line-height: 1.7;
+			}
+			.breadcrumb li + li::before {
+				content: '›';
+				margin-right: 0.5em;
+				color: var(--line);
+			}
+			.breadcrumb a {
+				color: var(--sub);
+				text-decoration: none;
+			}
+			.breadcrumb a:hover {
+				color: var(--ink);
+				text-decoration: underline;
+			}
+			/* 最後(いま見ているページ)はタイトルが長いので、はみ出さないよう省略する */
+			.breadcrumb li:last-child span {
+				display: inline-block;
+				max-width: 22em;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				vertical-align: bottom;
+				color: var(--ink);
 			}
 			.hero-image img {
 				display: block;
@@ -80,6 +185,23 @@ const { title, description, pubDate, updatedDate, heroImage, affiliate, category
 	<body>
 		<Header />
 		<main>
+			{
+				isPost && (
+					<nav class="breadcrumb" aria-label="パンくずリスト">
+						<ol>
+							{crumbs.map((c, i) => (
+								<li>
+									{i === crumbs.length - 1 ? (
+										<span aria-current="page">{c.name}</span>
+									) : (
+										<a href={c.url}>{c.name}</a>
+									)}
+								</li>
+							))}
+						</ol>
+					</nav>
+				)
+			}
 			<article>
 				<div class="hero-image">
 					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
