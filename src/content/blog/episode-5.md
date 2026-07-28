@@ -5,6 +5,7 @@ pubDate: '2026-07-28'
 category: tsukutta
 series: main
 episode: 5
+draft: true
 ---
 
 ## きっかけは、まったく別の相談だった
