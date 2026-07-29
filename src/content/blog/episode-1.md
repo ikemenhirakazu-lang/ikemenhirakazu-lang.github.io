@@ -3,6 +3,7 @@ title: '第1話: 18万円のMacBookをやめて、13万円のLenovoでAI生活�
 description: 'MacBookが4万円値上がりしたのにも気づかず「安いモデルが売り切れたのかな」と思い込んだ48歳が、従量課金も知らないままLenovoにたどり着くまでの記録。'
 pubDate: '2026-07-23'
 heroImage: '../../assets/blog/episode-1/00-hero.png'
+heroImageAlt: '開けた段ボール箱の前で、届いたノートパソコンを持ち上げて笑っているボス。箱の中と横でジンとニックが緩衝材をのぞき込んでいる。「18万円のMacBookをやめて、13万円のLenovoにした——4万円の値上がりに、気づいていませんでした」'
 category: getting-started
 series: main
 episode: 1

@@ -14,6 +14,10 @@ const blog = defineCollection({
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
 			heroImage: z.optional(image()),
+			// アイキャッチの代替テキスト(画像が見えない人・検索エンジンが読む文章)。
+			// アイキャッチはタイトル文字が焼き込まれたバナーなので、
+			// 「描かれている場面」+「画像内の文字」の両方を書く。30〜80字程度。
+			heroImageAlt: z.string().optional(),
 			affiliate: z.boolean().default(false),
 			draft: z.boolean().default(false),
 			// シリーズ分類(一覧のフィルタ・並び順に使う)。main=本編 / diet=AI×運動しないダイエット

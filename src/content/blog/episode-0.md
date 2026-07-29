@@ -3,6 +3,7 @@ title: '第0話: 48歳・土木一筋・非IT。ゲームしかしてこなか�
 description: '自己紹介を兼ねた第0話。なぜClaude Codeを始めたのか、今の自分に何ができて何ができないのか。'
 pubDate: '2026-07-22'
 heroImage: '../../assets/blog/episode-0/00-hero.png'
+heroImageAlt: '明るい部屋でノートパソコンに向かい、両手を広げて笑っているボスと、机の上と傍らにいるジンとニック。「土木一筋の48歳が、AIに仕事を頼み始めた——ゲームしかしてこなかったおじさんの記録です」'
 category: getting-started
 draft: false
 series: main

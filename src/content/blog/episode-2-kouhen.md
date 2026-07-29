@@ -3,6 +3,7 @@ title: '第2話(後編): 「ドメイン」「DNS」の三連発でパンクし�
 description: '独自ドメインの取得とDNSの設定で頭が止まった非ITの48歳が、一画面ずつAIに聞きながら進めた記録。当日そのままのスクリーンショット付き。かかったのはドメイン代の年1,500円だけ。'
 pubDate: '2026-07-25'
 heroImage: '../../assets/blog/episode-2-kouhen/00-hero.png'
+heroImageAlt: '夜の机で頭を抱えながら、片手に持ったスマホとノートパソコンの画面を見比べているボスと、横で静かに座るクロさん。「「ドメイン」「DNS」でパンクしながら、その日のうちに公開——かかったのは年1,500円と1日だけ」'
 category: getting-started
 series: main
 episode: 2.5
