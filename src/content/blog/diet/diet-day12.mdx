@@ -44,25 +44,30 @@ import Balloon from '../../../components/Balloon.astro';
 
 ## 数字で見ると、脂質だけ帯の外に出ている
 
+<div class="correction">
+  <p><strong>【2026-07-31 訂正】</strong>このメーターの判定が間違っていました。脂質をグラムでは減らせた日に「オーバー」と出ていて、減らしたのにおかしいぞ、と自分で気づきました。クロさん(ブログ係のAI相棒)に計算してもらったら、総カロリーが少ない日ほど割合(%)は跳ね上がるうえ、アプリの目標グラムと目安の割合がそもそも噛み合っていなかったそうです。</p>
+  <p>判定は「目標グラム数の±10%以内か」で見る形に直しました(この幅はクロさんの判断です)。本文とミルさんのセリフは当日の記録なので、そのままにしています。</p>
+</div>
+
 <div class="pfc">
-  <div class="pfc-row out" style="--lo:13;--hi:20;--val:20.9">
+  <div class="pfc-row out" style="--scale:150;--lo:90;--hi:110;--val:78.2">
     <p class="pfc-head"><span>タンパク質</span><span class="pfc-val">129.8g</span></p>
     <div class="pfc-bar"><span class="pfc-range"></span><span class="pfc-mark"></span></div>
-    <p class="pfc-foot"><span>20.9%（目標 13〜20%）</span><span class="pfc-judge">わずかに多い</span></p>
+    <p class="pfc-foot"><span>目標165.9g（差 −36.1g）｜総カロリー比 20.9%</span><span class="pfc-judge">足りない</span></p>
   </div>
-  <div class="pfc-row out" style="--lo:20;--hi:25;--val:31.3">
+  <div class="pfc-row out" style="--scale:150;--lo:90;--hi:110;--val:117.4">
     <p class="pfc-head"><span>脂質</span><span class="pfc-val">86.5g</span></p>
     <div class="pfc-bar"><span class="pfc-range"></span><span class="pfc-mark"></span></div>
-    <p class="pfc-foot"><span>31.3%（目標 20〜25%）</span><span class="pfc-judge">オーバー</span></p>
+    <p class="pfc-foot"><span>目標73.7g（差 +12.8g）｜総カロリー比 31.3%</span><span class="pfc-judge">多い</span></p>
   </div>
-  <div class="pfc-row out" style="--lo:50;--hi:60;--val:47.8">
+  <div class="pfc-row out" style="--scale:150;--lo:90;--hi:110;--val:89.4">
     <p class="pfc-head"><span>糖質(ご飯など)</span><span class="pfc-val">296.5g</span></p>
     <div class="pfc-bar"><span class="pfc-range"></span><span class="pfc-mark"></span></div>
-    <p class="pfc-foot"><span>47.8%（目標 50〜60%）</span><span class="pfc-judge">足りない</span></p>
+    <p class="pfc-foot"><span>目標331.8g（差 −35.3g）｜総カロリー比 47.8%</span><span class="pfc-judge">足りない</span></p>
   </div>
 </div>
 
-黄色い帯が目標の範囲、針がこの日の実績だ。<strong class="red">タンパク質は帯のすぐ外まで戻ってきたのに対して、脂質は帯からはっきりはみ出している。</strong>糖質も下限に届かず、3つとも帯の外という日だった。
+黄色い帯が目標の範囲、針がこの日の実績だ。<strong class="red">脂質だけが目標より12.8g多くて、タンパク質は36.1g、糖質は35.3g足りない。</strong>3つとも帯の外なのは変わらないが、はみ出す向きは脂質だけ逆だった。
 
 | いつ | 食べたもの | カロリー |
 |---|---|---|
@@ -99,7 +104,7 @@ import Balloon from '../../../components/Balloon.astro';
 
 ## 引き算のクセと、もぐらたたき
 
-タンパク質を直したら脂質が出て、今度は脂質を直したら次は何が出るのか。PFCの数字がちゃんと残っている日をミルさんに数えてもらったら、3つとも帯に収まったのは[第3話](/blog/diet/diet-day9/)の一回だけだった。あとは毎回どこかが帯からはみ出している。ひとつ叩くと隣が顔を出す、もぐらたたきのような感覚が、正直まだ抜けない。
+タンパク質を直したら脂質が出て、今度は脂質を直したら次は何が出るのか。PFCの数字がちゃんと残っている日を、あとからクロさん(ブログのほうのAI相棒)にグラムで数え直してもらったら、3つとも帯に収まった日はまだ一度もなかった。どの日も、どこかが帯からはみ出している。ひとつ叩くと隣が顔を出す、もぐらたたきのような感覚が、正直まだ抜けない。
 
 ## 明日の一手
 

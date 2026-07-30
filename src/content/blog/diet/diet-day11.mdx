@@ -46,27 +46,32 @@ import Balloon from '../../../components/Balloon.astro';
 
 魚を減らす方向で直すと思い込んでいたら、返ってきたのは真逆の答えだった。タンパク質が多いと言われたら減らす、というのが自分の中では自然な発想で、ミルさんにそう説明されるまでは、この理屈には正直たどり着けなかった。
 
-## 数字で見ると、右側にはみ出しているのはタンパク質だけ
+## グラムで見ると、3つとも足りていなかった
+
+<div class="correction">
+  <p><strong>【2026-07-31 訂正】</strong>このメーターの判定が間違っていました。脂質をグラムでは減らせた日に「オーバー」と出ていて、減らしたのにおかしいぞ、と自分で気づきました。クロさん(ブログ係のAI相棒)に計算してもらったら、総カロリーが少ない日ほど割合(%)は跳ね上がるうえ、アプリの目標グラムと目安の割合がそもそも噛み合っていなかったそうです。</p>
+  <p>判定は「目標グラム数の±10%以内か」で見る形に直しました(この幅はクロさんの判断です)。本文とミルさんのセリフは当日の記録なので、そのままにしています。</p>
+</div>
 
 <div class="pfc">
-  <div class="pfc-row out" style="--lo:13;--hi:20;--val:26.6">
+  <div class="pfc-row out" style="--scale:150;--lo:90;--hi:110;--val:83.1">
     <p class="pfc-head"><span>タンパク質</span><span class="pfc-val">137.8g</span></p>
     <div class="pfc-bar"><span class="pfc-range"></span><span class="pfc-mark"></span></div>
-    <p class="pfc-foot"><span>26.6%（目標 13〜20%）</span><span class="pfc-judge">多い</span></p>
+    <p class="pfc-foot"><span>目標165.9g（差 −28.1g）｜総カロリー比 26.6%</span><span class="pfc-judge">足りない</span></p>
   </div>
-  <div class="pfc-row in" style="--lo:20;--hi:25;--val:22.7">
+  <div class="pfc-row out" style="--scale:150;--lo:90;--hi:110;--val:71.0">
     <p class="pfc-head"><span>脂質</span><span class="pfc-val">52.3g</span></p>
     <div class="pfc-bar"><span class="pfc-range"></span><span class="pfc-mark"></span></div>
-    <p class="pfc-foot"><span>22.7%（目標 20〜25%）</span><span class="pfc-judge">収まった</span></p>
+    <p class="pfc-foot"><span>目標73.7g（差 −21.4g）｜総カロリー比 22.7%</span><span class="pfc-judge">足りない</span></p>
   </div>
-  <div class="pfc-row in" style="--lo:50;--hi:60;--val:50.7">
+  <div class="pfc-row out" style="--scale:150;--lo:90;--hi:110;--val:79.1">
     <p class="pfc-head"><span>糖質(ご飯など)</span><span class="pfc-val">262.6g</span></p>
     <div class="pfc-bar"><span class="pfc-range"></span><span class="pfc-mark"></span></div>
-    <p class="pfc-foot"><span>50.7%（目標 50〜60%）</span><span class="pfc-judge">収まった</span></p>
+    <p class="pfc-foot"><span>目標331.8g（差 −69.2g）｜総カロリー比 50.7%</span><span class="pfc-judge">足りない</span></p>
   </div>
 </div>
 
-黄色い帯が目標の範囲、黒い針がこの日の実績だ。<strong class="red">タンパク質だけ、帯の右側にはみ出している。</strong>脂質は22.7%でレンジの中、糖質は50.7%で下限すれすれながらぎりぎり範囲に入っていた。
+黄色い帯が目標の範囲、黒い針がこの日の実績だ。<strong class="red">針は3本とも、帯の左側にある。</strong>割合(%)では「タンパク質が多い」と出ていた日だが、クロさん(ブログ係のAI相棒)にグラムで計算し直してもらったら、タンパク質は28.1g、脂質は21.4g、糖質は69.2g、そろって目標に足りていなかった。総カロリーが目標より少ない日は、割合のほうが高く跳ね上がって見えるのだと教えてもらった。
 
 タンパク質そのものが多すぎるというより、糖質が下限に張り付いているせいで、割合として押し出されている形だった。
 

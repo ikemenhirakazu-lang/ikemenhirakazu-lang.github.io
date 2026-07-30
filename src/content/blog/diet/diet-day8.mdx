@@ -81,25 +81,30 @@ import Balloon from '../../../components/Balloon.astro';
 
 同じ数字を、目標の範囲に対してどこにいたのかで見ると、外し方がはっきりする。
 
+<div class="correction">
+  <p><strong>【2026-07-31 訂正】</strong>このメーターの判定が間違っていました。脂質をグラムでは減らせた日に「オーバー」と出ていて、減らしたのにおかしいぞ、と自分で気づきました。クロさん(ブログ係のAI相棒)に計算してもらったら、総カロリーが少ない日ほど割合(%)は跳ね上がるうえ、アプリの目標グラムと目安の割合がそもそも噛み合っていなかったそうです。</p>
+  <p>判定は「目標グラム数の±10%以内か」で見る形に直しました(この幅はクロさんの判断です)。本文とミルさんのセリフは当日の記録なので、そのままにしています。</p>
+</div>
+
 <div class="pfc">
-  <div class="pfc-row out" style="--lo:13;--hi:20;--val:26.3">
+  <div class="pfc-row in" style="--scale:150;--lo:90;--hi:110;--val:103.4">
     <p class="pfc-head"><span>タンパク質</span><span class="pfc-val">169.1g</span></p>
     <div class="pfc-bar"><span class="pfc-range"></span><span class="pfc-mark"></span></div>
-    <p class="pfc-foot"><span>26.3%（目標 13〜20%）</span><span class="pfc-judge">多い</span></p>
+    <p class="pfc-foot"><span>目標163.6g（差 +5.5g）｜総カロリー比 26.3%</span><span class="pfc-judge">ほぼ目標どおり</span></p>
   </div>
-  <div class="pfc-row out" style="--lo:20;--hi:25;--val:32.6">
+  <div class="pfc-row out" style="--scale:150;--lo:90;--hi:110;--val:128.2">
     <p class="pfc-head"><span>脂質</span><span class="pfc-val">93.2g</span></p>
     <div class="pfc-bar"><span class="pfc-range"></span><span class="pfc-mark"></span></div>
-    <p class="pfc-foot"><span>32.6%（目標 20〜25%）</span><span class="pfc-judge">オーバー</span></p>
+    <p class="pfc-foot"><span>目標72.7g（差 +20.5g）｜総カロリー比 32.6%</span><span class="pfc-judge">多い</span></p>
   </div>
-  <div class="pfc-row out" style="--lo:50;--hi:60;--val:41.1">
+  <div class="pfc-row out" style="--scale:150;--lo:90;--hi:110;--val:80.8">
     <p class="pfc-head"><span>糖質(ご飯など)</span><span class="pfc-val">264.4g</span></p>
     <div class="pfc-bar"><span class="pfc-range"></span><span class="pfc-mark"></span></div>
-    <p class="pfc-foot"><span>41.1%（目標 50〜60%）</span><span class="pfc-judge">足りない</span></p>
+    <p class="pfc-foot"><span>目標327.2g（差 −62.8g）｜総カロリー比 41.1%</span><span class="pfc-judge">足りない</span></p>
   </div>
 </div>
 
-黄色い帯が目標の範囲、赤い針がこの日の実績だ。<strong class="red">3つとも、帯から外れている。</strong>
+黄色い帯が目標の範囲、赤い針がこの日の実績だ。<strong class="red">タンパク質はほぼ目標どおり。脂質だけが20.5g多くて、糖質は62.8g足りない。</strong>揚げ物三品が、そのまま脂質の針の位置に出ている。
 
 カロリーはほぼ目標どおりで、タンパク質もおおむね良好だった。脂質は目標より約20gオーバーしていて、これが「脂質を盛れとは言ってない」の正体――揚げ物三品が効いた。
 

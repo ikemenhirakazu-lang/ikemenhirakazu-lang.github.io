@@ -404,15 +404,28 @@ table {
 
 /* ── PFCメーター ───────────────────────────────
    「目標の範囲に収まったか」を一目で見せる。数字の表より、位置で分かるほうが早い。
+
+   🚨判定は「グラム数」で行う。「総カロリーに占める割合(%)」で判定しない(2026-07-31)。
+      理由1: アプリの目標グラム(参考にしているトレーナーさんの計算式)は
+              カロリー比に直すと P25% / F25% / C50%。目安レンジ P13〜20% とは
+              両立しないので、目標をぴったり達成した日でも必ず「多い」と赤が出る
+      理由2: 割合は総カロリーが目標を下回った日ほど跳ね上がる。
+              実際に減らした日が「オーバー」と表示され、逆の判定になる
+      → 2026-07-31に公開済み5本を割合判定からグラム判定へ直した(訂正文つき)
+
+   目盛りは「目標グラムに対する%」に正規化する。--scale:150 固定で、
+   帯 --lo:90 / --hi:110(=目標の±10%が「収まった」)、--val は 実績g÷目標g×100。
+   目標グラム = 目標kcal÷16(P) / ÷36(F) / ÷8(C)。
+
    書き方(.md でもそのまま使える。--lo/--hi/--val は % を付けない数字):
      <div class="pfc">
-       <div class="pfc-row in" style="--lo:13;--hi:20;--val:19.5">
-         <p class="pfc-head"><span>タンパク質</span><span class="pfc-val">115.7g</span></p>
+       <div class="pfc-row in" style="--scale:150;--lo:90;--hi:110;--val:91.5">
+         <p class="pfc-head"><span>脂質</span><span class="pfc-val">67.4g</span></p>
          <div class="pfc-bar"><span class="pfc-range"></span><span class="pfc-mark"></span></div>
-         <p class="pfc-foot"><span>19.5%（目標 13〜20%）</span><span class="pfc-judge">収まった</span></p>
+         <p class="pfc-foot"><span>目標73.7g（差 −6.3g）｜総カロリー比 28.4%</span><span class="pfc-judge">ほぼ目標どおり</span></p>
        </div>
      </div>
-   目標を外した行は class="pfc-row out"、判定の文字を「オーバー」等にする。 */
+   目標を外した行は class="pfc-row out"、判定の文字を「足りない」「多い」にする。 */
 .pfc {
 	margin: 2em 0;
 }
@@ -493,6 +506,29 @@ table {
 }
 .pfc-row.out .pfc-mark {
 	background: #cf3a2e;
+}
+/* ── 訂正・注記のボックス ───────────────────────
+   公開後に判定や数字を直したときに、記事の該当箇所へ入れる。
+   書き方: <div class="correction"><p><strong>【YYYY-MM-DD 訂正】</strong>…</p></div> */
+.correction {
+	margin: 2em 0;
+	padding: 1em 1.2em;
+	background: var(--card);
+	border: 1px solid var(--line);
+	border-left: 5px solid var(--sub);
+	border-radius: 8px;
+	font-size: 0.9em;
+	line-height: 1.85;
+	color: var(--sub);
+}
+.correction p {
+	margin: 0 0 0.7em;
+}
+.correction p:last-child {
+	margin-bottom: 0;
+}
+.correction strong {
+	color: var(--ink);
 }
 img {
 	max-width: 100%;
