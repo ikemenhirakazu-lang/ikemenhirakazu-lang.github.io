@@ -1,15 +1,61 @@
 ---
 import Layout from '../layouts/BlogPost.astro';
+
+const FORM_ID = '1FAIpQLSem5GVzKTYkPmGd88JWMaUlr4n1tqqTMKBjGamE62duukz0Gg';
+const formUrl = `https://docs.google.com/forms/d/e/${FORM_ID}/viewform`;
 ---
 
 <Layout
 	title="お問い合わせ"
-	description="お問い合わせ"
+	description="「AIよくばり日記」へのお問い合わせフォームです。記事へのご指摘、掲載のご相談、そのほかのご連絡はこちらからお願いします。"
 	pubDate={new Date('July 22 2026')}
 >
 	<h2>お問い合わせ</h2>
+
 	<p>
-		お問い合わせフォームは現在準備中です。
-		(公開準備フェーズで Google フォームを設置予定)
+		「AIよくばり日記」を読んでいただき、ありがとうございます。
+	</p>
+
+	<p>
+		記事の内容についてのご指摘、掲載のご相談、そのほかのご連絡は、下のフォームからお願いします。
+		いただいた内容は、運営者(ジンとニックのボス)本人が確認します。
+	</p>
+
+	<p>
+		お返事が必要な場合は、メールアドレスのご記入をお願いします。
+		内容によっては、お返事までにお時間をいただくこと、またお返事できないことがあります。
+	</p>
+
+	<div class="form-wrap">
+		<iframe
+			src={`${formUrl}?embedded=true`}
+			title="お問い合わせフォーム"
+			loading="lazy"
+			width="100%"
+			height="900">読み込んでいます…</iframe>
+	</div>
+
+	<p class="fallback">
+		フォームが表示されない場合は、
+		<a href={formUrl} target="_blank" rel="noopener noreferrer">こちらのページ</a>
+		から直接ご入力いただけます。
 	</p>
 </Layout>
+
+<style>
+	.form-wrap {
+		margin: 2em 0 1em;
+		border: 1px solid var(--line);
+		border-radius: 6px;
+		overflow: hidden;
+		background: var(--card);
+	}
+	.form-wrap iframe {
+		display: block;
+		border: 0;
+	}
+	.fallback {
+		font-size: 0.9em;
+		color: var(--sub);
+	}
+</style>
