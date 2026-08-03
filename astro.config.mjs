@@ -7,6 +7,12 @@ import { defineConfig, fontProviders } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://ai-yokubari.com',
+	// 記事をフォルダに移してURLが変わったときは、必ずここに古いURLを残す。
+	// 残さないと、Xに投稿したリンクや外からのリンクが行き止まりになる。
+	redirects: {
+		// 2026-08-04: Claude Code入門シリーズを nyuumon/ にまとめたときの移動
+		'/blog/claude-code-hajimekata': '/blog/nyuumon/claude-code-hajimekata',
+	},
 	integrations: [mdx(), sitemap()],
 	fonts: [
 		{

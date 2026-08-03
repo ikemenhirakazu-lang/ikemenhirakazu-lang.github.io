@@ -3,6 +3,10 @@ title: 'Claude Codeの始め方｜VSCodeを日本語にして最初の1回を動
 description: 'IT経験ゼロの48歳が、VSCodeを入れて日本語にし、Claude Codeで最初の仕事を頼み終えるまでの手順。画面つき。つまずきやすい「制限モード」まで書いています。'
 pubDate: 2026-08-04
 category: 'getting-started'
+series: 'nyuumon'
+episode: 1
+heroImage: '../../../assets/blog/claude-code-hajimekata/00-hero.png'
+heroImageAlt: '黒板の前で、ツイードのジャケットを着て指し棒を持った丸眼鏡の黒猫クロさんが先生として立っている。黒板には白い文字で「Claude Codeの始め方——VSCodeを日本語にして、最初の1回を動かすまで」「Claude Code入門 第1回」と書かれている'
 ---
 
 Claude Code(クロードコード)は、頼んだ作業をパソコンの中で実際に手を動かしてやってくれるAIです。僕はこれに「クロさん」という名前を付けて、ブログの相棒にしています(AIの相棒・クロさん)。
@@ -31,7 +35,7 @@ VSCodeは、Microsoftが無料で出しているソフトです。僕は道具�
 1. ブラウザで「VS Code」と検索して、公式サイト(code.visualstudio.com)を開きます。
 2. ページ右上の「Download」を押します。
 
-![VSCodeの公式ダウンロードページ。「Download Visual Studio Code」の見出しの下に、Windows・macOS・Linuxの3つの箱が横に並んでいる。左のWindowsの箱には「YOUR OS」という青い印が付いていて、その中に大きな青い「Windows」ボタンが1つだけある](../../assets/blog/claude-code-hajimekata/02-vscode-download.png)
+![ダウンロードページのWindowsの箱だけを拡大したもの。「Windows」の見出しの右に「YOUR OS」という青い印があり、その下の大きな青い「Windows」ボタンがオレンジ色の枠で囲まれている。さらに下に「Requires Windows 10 or 11 (64-bit)」と「OTHER DOWNLOADS」の選択欄](../../../assets/blog/claude-code-hajimekata/02-vscode-download.png)
 
 3. 大きな青い「Windows」ボタンを押します。ここは迷いません。押すボタンは実質この1つで、自分のパソコンに合うものが青く光っています(「YOUR OS」=あなたのパソコン用、という印付きです)。
 4. ダウンロードされたファイルをダブルクリックします。
@@ -41,14 +45,14 @@ VSCodeは、Microsoftが無料で出しているソフトです。僕は道具�
 
 ## 2. 画面を日本語にする
 
-![説明用に表示言語を英語へ戻して撮り直したVSCodeの画面。上のメニューが「File」「Edit」「Selection」「View」「Go」「Run」「Terminal」「Help」と全部英語で並んでいる。真ん中には「Open Chat」「Show All Commands」「Open Recent」「Open File」「Open Folder」というショートカットの案内も英語で出ている](../../assets/blog/claude-code-hajimekata/04-vscode-english.png)
+![英語のままのVSCodeのメニューバーを拡大したもの。「File」「Edit」「Selection」「View」「Go」「Run」「Terminal」「Help」と英語だけが並んでいる](../../../assets/blog/claude-code-hajimekata/04-vscode-english.png)
 
 開いた直後はこういう全部英語の画面です。引き返したくなりますが、ここからすぐ日本語になります。
 
 1. 左端の縦のバーにある、四角いブロックを組み合わせたようなアイコン(拡張機能の一覧)を押します。上から5番目です。
 2. 一番上の検索欄に「japan」と打ちます。
 
-![VSCodeの拡張機能の検索結果。検索欄に「japan」と入っていて、その下に似た名前の拡張機能がずらりと並び、一覧は画面の下へ続いている。一番上が「Japanese Language Pack for Visual Studio Code 日本語」で、作者の欄に青いチェックマーク付きで「Microsoft」と書かれている。3番目の「Japanese (Japan) language support」も同じく作者はMicrosoftだが、これは音声認識用の別物。ほかに「Monokai-Japan Theme」「Japanese Word Handler」「Japanesque Theme」など、作者がばらばらの無関係なものが続く](../../assets/blog/claude-code-hajimekata/06-japan-search.png)
+![拡張機能で「japan」と検索した結果を拡大したもの。1番目の「Japanese Language Pack for Visual Studio Code／日本語／Microsoft」がオレンジ色の枠で囲まれ、これが正解。3番目の「Japanese (Japan) language...」も作者はMicrosoftだがマイクのアイコンが付いた別物で、灰色の枠で囲まれている。間に無関係な「Monokai-Japan Theme」が挟まっている](../../../assets/blog/claude-code-hajimekata/06-japan-search.png)
 
 3. 似たような名前がずらりと並びます。ここで選ぶ条件は2つです。名前が「**Japanese Language Pack for Visual Studio Code**」(説明のところに「日本語」と書いてあるもの)で、**かつ**作者が「Microsoft」でチェックマーク付きのもの。この2つがそろったものを選びます(僕の画面は入れたあとの撮り直しなので「Install」ボタンが消えていますが、初めての人にはボタンが出ます)。
 4. 少し下にある「Japanese (Japan) language support …」も作者は同じMicrosoftですが、こちらは別物で、入れても画面は日本語になりません。作者名だけで選ばず、必ず名前とセットで確かめてください。
@@ -57,14 +61,14 @@ VSCodeは、Microsoftが無料で出しているソフトです。僕は道具�
 
 **案内が出なかった場合**は、こうします。
 
-![英語のVSCodeでCtrl+Shift+Pを押した画面。上に細長い入力欄が開いて「>display」と打ち込まれている。その下に候補が2つ出ていて、1番目の「Configure Display Language」が青く選ばれている](../../assets/blog/claude-code-hajimekata/05-command-palette-en.png)
+![英語のVSCodeでCtrl+Shift+Pを押し、「>display」と打ち込んだ画面の拡大。候補の1番目「Configure Display Language」がオレンジ色の枠で囲まれている](../../../assets/blog/claude-code-hajimekata/05-command-palette-en.png)
 
 1. キーボードで「Ctrl+Shift+P」を押します。画面の上に入力欄が出ます。
 2. 「display」と打ちます。
 3. 出てきた「Configure Display Language」を選びます。
 4. 「日本語」を選ぶと、再起動して日本語になります。
 
-![日本語になったVSCodeで同じ操作をした画面。メニューが「ファイル」「編集」「選択」「表示」と日本語になっていて、入力欄に「>display」と打つと「表示言語を構成する / Configure Display Language」という日本語と英語が併記された候補が青く選ばれている](../../assets/blog/claude-code-hajimekata/03-command-palette-ja.png)
+![日本語になったVSCodeで同じ操作をした画面の拡大。「表示言語を構成する／Configure Display Language」という候補がオレンジ色の枠で囲まれている](../../../assets/blog/claude-code-hajimekata/03-command-palette-ja.png)
 
 日本語になったあとで同じ操作をすると、この画面になります。英語に戻したいときも同じ手順です。つまり、失敗してもやり直せる操作なので、安心して進めてください。
 
@@ -75,7 +79,7 @@ VSCodeは、Microsoftが無料で出しているソフトです。僕は道具�
 1. さっきと同じ拡張機能のアイコンを押します(日本語で「拡張機能」になっています)。
 2. 検索欄に「claude」と打ちます。
 
-![VSCodeの拡張機能で「claude」と検索した結果。似た名前のものが十数個並んでいる。一番上が「Claude Code for VS Code」で、作者の欄に青いチェックマーク付きで「Anthropic」と書かれている。その下には「Chat for Claude Code」「Claude Code Assistant(説明文にUnofficialと書かれている)」「Claude Code YOLO」「Claude Code Usage」「Claude Config」「Claude Theme」など、作者がばらばらの別物がずらりと続いている](../../assets/blog/claude-code-hajimekata/07-claude-search.png)
+![拡張機能で「claude」と検索した結果を拡大したもの。1番目の「Claude Code for VS Code／作者Anthropic」がオレンジ色の枠で囲まれ、これが正解。その下に「Chat for Claude Code（作者Andre Pimenta）」「Claude Fable 5, GPT-5…（作者Sixth）」「Claude Code Assistant（説明にUnofficialと書かれている）」など、作者がばらばらの別物が続いている](../../../assets/blog/claude-code-hajimekata/07-claude-search.png)
 
 3. ここも紛らわしい名前がずらりと並びます。「Chat for Claude Code」「Claude Code Assistant(Unofficial=非公式、と書いてあります)」「Claude Code YOLO」——どれも今回入れたいものとは別物です。正解は「**Claude Code for VS Code**」で、作者が「**Anthropic**」でチェックマーク付きのもの。AnthropicはClaudeを作っている会社そのもので、この画面でAnthropicと書いてあるのは1つだけなので、こちらは作者名を見れば間違えません。
 4. 「インストール」を押します。
@@ -93,13 +97,13 @@ VSCodeは、Microsoftが無料で出しているソフトです。僕は道具�
 1. デスクトップの何もないところを右クリックして、「新規作成」→「フォルダー」を選びます。名前は何でも大丈夫です。僕は「AIの練習」にしました。
 2. VSCodeに戻って、左上の「ファイル」→「フォルダーを開く」を押します。
 
-![VSCodeの「フォルダーを開く」ダイアログ。デスクトップの中のフォルダが一覧になっていて、「AIの練習」という行が黄色く選ばれている。下の「フォルダー」欄にも「AIの練習」と入っていて、右下に「フォルダーの選択」ボタンがある](../../assets/blog/claude-code-hajimekata/08-open-folder.png)
+![「フォルダーを開く」ダイアログの拡大。フォルダの一覧の中で「AIの練習」の行がオレンジ色の枠で囲まれ、右下の「フォルダーの選択」ボタンも同じくオレンジ色の枠で囲まれている](../../../assets/blog/claude-code-hajimekata/08-open-folder.png)
 
 3. いま作ったフォルダを選んで、「フォルダーの選択」を押します。
 
 ## 6. 「制限モードになっています」と出ます。壊れていません
 
-![フォルダを開いた直後のVSCodeの画面。上に細いバーが出て「制限モードは、安全なコード参照のためのものです。すべての機能を有効にするには、このフォルダーを信頼します。」と書かれ、右に「管理」というリンクがある。左のエクスプローラーには「AIの練習」だけが表示されていて、左端の縦のバーにはアイコンが5つ(ファイル・検索・ソース管理・実行とデバッグ・拡張機能)しかなく、Claude Codeのアイコンが無い](../../assets/blog/claude-code-hajimekata/09-seigen-mode.png)
+![フォルダを開いた直後に画面の上に出る細いバーの拡大。「制限モードは、安全なコード参照のためのものです。すべての機能を有効にするには、このフォルダーを信頼します。」と書かれ、右に「管理」「詳細情報」のリンクがある](../../../assets/blog/claude-code-hajimekata/09-seigen-mode.png)
 
 フォルダを開いた直後の画面がこれです。上に「制限モードは、安全なコード参照のためのものです。すべての機能を有効にするには、このフォルダーを信頼します。」という細いバーが出ています。
 
@@ -109,16 +113,16 @@ VSCodeは、Microsoftが無料で出しているソフトです。僕は道具�
 
 1. 上のバーの「管理」を押します。
 
-![「ワークスペースの信頼」の画面。中央に盾のマークと「制限モードになっています」という大きな見出し。左側の「信頼済みフォルダー内」には、タスクの実行が許可される・デバッグが有効・すべての設定が適用される・すべての拡張機能がアクティブ化される、という4つが緑のチェックで並ぶ。右側の「制限モードで」には同じ4項目が赤いバツで並び、そのうちの1つに「19 拡張機能 が無効になっているか、機能の制限があります」と書かれている。左側の下に青い「信頼する」ボタン](../../assets/blog/claude-code-hajimekata/10-trust-dialog.png)
+![「制限モードになっています」という画面の拡大。左に「信頼済みフォルダー内」の4項目が緑のチェックで並び、その下の青い「信頼する」ボタンがオレンジ色の枠で囲まれている。右の「制限モードで」の側では「19 拡張機能 が無効になっているか、機能の制限があります」の行がオレンジ色の枠で囲まれている](../../../assets/blog/claude-code-hajimekata/10-trust-dialog.png)
 
 2. 「制限モードになっています」という画面が出ます。右側には「19 拡張機能 が無効になっているか、機能の制限があります」とあります(19という数は僕の環境のもので、入れている拡張機能の数によって変わります)。
 3. 真ん中の青い「信頼する」を押します。
 
-![信頼したあとの同じ画面。見出しが「このフォルダーを信頼します」に変わり、「ワークスペースに信頼が付与されているため、すべての機能が有効になっています。」と書かれている。左側の「信頼済みフォルダー内」の枠が青く囲まれて選ばれた状態になっている](../../assets/blog/claude-code-hajimekata/11-trusted.png)
+![信頼したあとの画面の拡大。見出しが「このフォルダーを信頼します」に変わり、「ワークスペースに信頼が付与されているため、すべての機能が有効になっています。」と書かれている](../../../assets/blog/claude-code-hajimekata/11-trusted.png)
 
 4. 見出しが「このフォルダーを信頼します」に変われば完了です。右上の×でこの画面を閉じます。
 
-![信頼した後のVSCodeの画面。上の制限モードのバーが消えている。左端の縦のバーを見ると、さっきは無かった、線が放射状に伸びた形のClaude Codeのアイコンが増えている](../../assets/blog/claude-code-hajimekata/12-after-trust.png)
+![左端の縦のバーを、信頼する前と信頼した後で並べて比べた図。左（信頼する前）は拡張機能のアイコンの下に何も無い。右（信頼した後）は同じ位置に、線が放射状に伸びたClaude Codeのアイコンが現れていて、オレンジ色の枠で囲まれている](../../../assets/blog/claude-code-hajimekata/12-after-trust.png)
 
 **ここまでできていれば**、左のバーに、線が放射状に伸びた印——Claude Codeのアイコン——が現れています。ひとつ前の画面と見比べると、増えているのが分かります。
 
@@ -134,7 +138,7 @@ VSCodeは、Microsoftが無料で出しているソフトです。僕は道具�
 
 3. Enterで送ると、AIがフォルダの中を確かめてから、ファイルを作ろうとします。そこで手が止まって、こういう画面が出ます。
 
-![Claude Codeの画面。上に「このフォルダにメモ用のテキストファイルを1つ作って」という頼みごとが表示され、その下でAIがフォルダの中を確認し、メモ.txtの中身を書こうとしている。画面の下に確認の窓が開いていて、「Allow write (ファイルの場所)?」という見出しの下に「1 Yes」「2 Yes, allow all edits this session」「3 No」という3つの選択肢が縦に並び、1番目が青く選ばれている](../../assets/blog/claude-code-hajimekata/13-permission.png)
+![許可を求められている窓の拡大。「Allow write（ファイルの場所）?」という問いの下に「1 Yes」「2 Yes, allow all edits this session」「3 No」の3つが縦に並び、1番目がオレンジ色の枠で囲まれている](../../../assets/blog/claude-code-hajimekata/13-permission.png)
 
 4. これが「**これ触りますけどいいですか**」の一言確認です。表示は英語ですが、3択の意味はこうです。
 
@@ -146,7 +150,7 @@ VSCodeは、Microsoftが無料で出しているソフトです。僕は道具�
 
 5. 「1 Yes」を選びます。
 
-![完了した画面。左のエクスプローラーの「AIの練習」フォルダの下に「メモ.txt」が増えている。右側ではAIが「メモ用のテキストファイルを作りました。」と報告し、中身はタイトルと作成日、区切り線だけの空っぽの状態だと説明している](../../assets/blog/claude-code-hajimekata/14-done.png)
+![できあがった状態の拡大。上は左のファイル一覧で、「AIの練習」フォルダの下に「メモ.txt」が増えている部分がオレンジ色の枠で囲まれている。下はAIの報告で「メモ用のテキストファイルを作りました。」「メモ.txt — フォルダ AIの練習 の中」と書かれている](../../../assets/blog/claude-code-hajimekata/14-done.png)
 
 これで完了です。左の一覧に「メモ.txt」が増えて、「メモ用のテキストファイルを作りました」と報告が返ってきます。中身はタイトルと作成日、区切り線だけの空っぽのメモです。
 
