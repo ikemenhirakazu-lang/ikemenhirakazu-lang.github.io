@@ -40,11 +40,14 @@ export const NYUUMON = {
   path: '/blog/nyuumon/',
   total: 8,
   lead: 'IT経験ゼロの48歳が、Claude Codeを入れるところから順に書いていく全8回。',
+  // 2026-08-04 ボス判断で順番を入れ替えた。「もっと初歩的なところからでいい。
+  // CLAUDE.mdとかそういうところ」→ CLAUDE.md を4番目から3番目へ前倒し。
+  // ⚠️ 第2回だけは動かせない。第1回の本文と図解24で「次の記事(操作の基本)」と読者に約束ずみ。
   episodes: [
     { n: 1, title: '入れて、動かすまで', slug: 'nyuumon/claude-code-hajimekata' },
     { n: 2, title: '操作の基本' },
-    { n: 3, title: 'フォルダと会話の分け方' },
-    { n: 4, title: 'CLAUDE.md(毎回読ませる紙)' },
+    { n: 3, title: 'CLAUDE.md(毎回読ませる紙)' },
+    { n: 4, title: 'フォルダと会話の分け方' },
     { n: 5, title: 'スキル' },
     { n: 6, title: 'サブエージェント' },
     { n: 7, title: '外部とつなぐ(MCP)とAPIキー' },
