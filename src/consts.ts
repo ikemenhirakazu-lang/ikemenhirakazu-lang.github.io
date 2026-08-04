@@ -29,3 +29,25 @@ export type CategorySlug = (typeof CATEGORIES)[number]['slug'];
 
 export const categoryLabel = (slug: string) =>
   CATEGORIES.find((c) => c.slug === slug)?.label ?? slug;
+
+// ── Claude Code入門シリーズ(全8回)の目次 ───────────────────────────
+// 記事より先にここへ全8回を並べておく。まだ公開していない回は「準備中」で出る。
+// 公開したら、その回の title は記事側(frontmatter)のものが優先される。
+// 出どころ: docs/superpowers/specs/2026-08-03-claude-code-nyuumon-series-design.md §3
+export const NYUUMON = {
+  key: 'nyuumon',
+  label: '非ITのClaude Code入門',
+  path: '/blog/nyuumon/',
+  total: 8,
+  lead: 'IT経験ゼロの48歳が、Claude Codeを入れるところから順に書いていく全8回。',
+  episodes: [
+    { n: 1, title: '入れて、動かすまで', slug: 'nyuumon/claude-code-hajimekata' },
+    { n: 2, title: '操作の基本' },
+    { n: 3, title: 'フォルダと会話の分け方' },
+    { n: 4, title: 'CLAUDE.md(毎回読ませる紙)' },
+    { n: 5, title: 'スキル' },
+    { n: 6, title: 'サブエージェント' },
+    { n: 7, title: '外部とつなぐ(MCP)とAPIキー' },
+    { n: 8, title: 'デスクトップアプリという窓' },
+  ],
+} as const;

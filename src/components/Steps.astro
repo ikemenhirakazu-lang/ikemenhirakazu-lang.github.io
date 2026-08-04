@@ -1,11 +1,18 @@
 ---
 // 段取り図。手順を上から順に並べる。中に <Step> を並べて使う。
 // 番号は CSS の counter で振るので、順番を入れ替えても勝手に振り直る。
+//
+// start = 途中の番号から始める。手順の間にスクリーンショットを挟むと <Steps> が
+// いったん切れるので、続きの塊に start を渡して番号をつなげる。
+//   <Steps>…1・2…</Steps>  ![画面](…)  <Steps start={3}>…3・4…</Steps>
+// ⚠️ 画像を <Step> の中に入れると、カードの余白のぶん画面が1割ほど小さくなる。
+//    スクリーンショットは <Steps> の外に出して、幅いっぱいで見せる。
 interface Props {
 	title?: string;
 	note?: string;
+	start?: number;
 }
-const { title, note } = Astro.props;
+const { title, note, start = 1 } = Astro.props;
 ---
 
 <div class="steps-wrap">
@@ -17,7 +24,7 @@ const { title, note } = Astro.props;
 			</p>
 		)
 	}
-	<ol class="steps">
+	<ol class="steps" style={`counter-reset: step ${start - 1}`}>
 		<slot />
 	</ol>
 	{note && <p class="steps-note">{note}</p>}

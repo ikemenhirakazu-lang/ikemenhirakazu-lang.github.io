@@ -6,8 +6,9 @@ import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import PrNotice from '../components/PrNotice.astro';
+import SeriesNav from '../components/SeriesNav.astro';
 import Toc from '../components/Toc.astro';
-import { categoryLabel } from '../consts';
+import { NYUUMON, categoryLabel } from '../consts';
 
 type Props = CollectionEntry<'blog'>['data'] & {
 	// 記事ページからのみ渡る。固定ページ(プロフィール等)では未指定。
@@ -23,11 +24,15 @@ const {
 	heroImageAlt,
 	affiliate,
 	category,
+	series,
+	episode,
 	headings,
 } = Astro.props;
 
 // category があるものだけ「記事」とみなす。固定ページ(プロフィール等)は対象外。
 const isPost = Boolean(category);
+// 入門シリーズの回だけ、前後と目次への案内を出す
+const inNyuumon = series === NYUUMON.key && typeof episode === 'number';
 const site = Astro.site!;
 const pageUrl = new URL(Astro.url.pathname, site).href;
 const iso = (d: Date) => new Date(d).toISOString();
@@ -240,8 +245,10 @@ const articleLd = {
 						<hr />
 					</div>
 					{affiliate && <PrNotice />}
+					{inNyuumon && <SeriesNav episode={episode!} place="top" />}
 					<Toc headings={headings} />
 					<slot />
+					{inNyuumon && <SeriesNav episode={episode!} place="bottom" />}
 				</div>
 			</article>
 		</main>

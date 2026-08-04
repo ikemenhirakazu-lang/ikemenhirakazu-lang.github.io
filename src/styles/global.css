@@ -260,6 +260,23 @@ p {
 	border-radius: 10px;
 }
 
+/* ── 画面の中の小さなアイコン ──────────────────────
+   「四角いブロックを組み合わせたようなアイコン」と言葉で説明するより、
+   その絵をそのまま文章の中に置いたほうが早い。<UiIcon> から使う。
+   ⚠️ 上の .prose p > img が幅100%にしてしまうので、必ずここで打ち消す
+      (打ち消さないと、小さなアイコンが本文の幅いっぱいに伸びる)。 */
+.prose img.ui-icon,
+.prose p > img.ui-icon,
+.prose li > img.ui-icon {
+	display: inline-block;
+	width: auto;
+	height: 1.7em;
+	margin: 0 0.15em;
+	vertical-align: -0.42em;
+	border: 1px solid var(--line);
+	border-radius: 5px;
+}
+
 /* ── 次の記事へ ────────────────────────────────
    前編の締めに置く「後編へ続く」。大きく、押せると分かる形にする。
    書き方(.md でもそのまま使える):

@@ -1,0 +1,19 @@
+---
+// 画面の中の小さなアイコンを、文章の中にそのまま置く。
+// 「四角いブロックを組み合わせたようなアイコン」と言葉で説明するより絵が早い、というボスの指摘(2026-08-04)から。
+//
+// 使い方(.mdx):
+//   import ext from '../../../assets/blog/<スラッグ>/15-icon-extensions.png';
+//   左端の縦のバーにある <UiIcon src={ext} alt="拡張機能のアイコン" /> を押します。
+//
+// 見た目(高さ1.7em・幅は元の比率のまま)は global.css の .ui-icon にある。
+import { Image } from 'astro:assets';
+
+interface Props {
+	src: ImageMetadata;
+	alt: string;
+}
+const { src, alt } = Astro.props;
+---
+
+<Image src={src} alt={alt} width={34} height={34} class="ui-icon" />
