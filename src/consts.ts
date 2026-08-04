@@ -45,7 +45,7 @@ export const NYUUMON = {
   // ⚠️ 第2回だけは動かせない。第1回の本文と図解24で「次の記事(操作の基本)」と読者に約束ずみ。
   episodes: [
     { n: 1, title: '入れて、動かすまで', slug: 'nyuumon/claude-code-hajimekata' },
-    { n: 2, title: '操作の基本' },
+    { n: 2, title: '操作の基本', slug: 'nyuumon/claude-code-kyoka' },
     { n: 3, title: 'CLAUDE.md(毎回読ませる紙)' },
     { n: 4, title: 'フォルダと会話の分け方' },
     { n: 5, title: 'スキル' },
