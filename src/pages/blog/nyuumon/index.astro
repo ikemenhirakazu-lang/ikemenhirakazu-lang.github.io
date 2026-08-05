@@ -1,6 +1,7 @@
 ---
-// Claude Code入門シリーズのまとめページ。全8回をここに先に並べておく。
+// Claude Code入門シリーズのまとめページ。予定している回をここに先に並べておく。
 // 未公開の回も「準備中」で出す(読者が全体の道のりを先に見られるように)。
+// 🚨「全◯回」とは名乗らない(2026-08-05 ボス判断)。回は増える。→ consts.ts の NYUUMON
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import BaseHead from '../../../components/BaseHead.astro';
@@ -18,7 +19,7 @@ const byEpisode = new Map(posts.map((p) => [p.data.episode, p]));
 const rows = NYUUMON.episodes.map((ep) => ({ ...ep, post: byEpisode.get(ep.n) }));
 const published = rows.filter((r) => r.post).length;
 
-const title = `${NYUUMON.label}(全${NYUUMON.total}回)`;
+const title = NYUUMON.label;
 const description = `${NYUUMON.lead} いまのところ${published}回まで公開しています。`;
 ---
 
@@ -147,7 +148,7 @@ const description = `${NYUUMON.lead} いまのところ${published}回まで公�
 						書いているのは土木一筋30年の会社員です。自分が実際にやった順に、画面つきで書いていきます。
 						上から順に読んでください。
 					</p>
-					<span class="progress">全{NYUUMON.total}回のうち、{published}回まで公開しています</span>
+					<span class="progress">いま{published}回まで公開しています(続きます)</span>
 				</div>
 
 				<ul class="eps">

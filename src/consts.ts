@@ -30,16 +30,20 @@ export type CategorySlug = (typeof CATEGORIES)[number]['slug'];
 export const categoryLabel = (slug: string) =>
   CATEGORIES.find((c) => c.slug === slug)?.label ?? slug;
 
-// ── Claude Code入門シリーズ(全8回)の目次 ───────────────────────────
-// 記事より先にここへ全8回を並べておく。まだ公開していない回は「準備中」で出る。
+// ── Claude Code入門シリーズの目次 ─────────────────────────────────
+// 記事より先にここへ予定の回を並べておく。まだ公開していない回は「準備中」で出る。
 // 公開したら、その回の title は記事側(frontmatter)のものが優先される。
 // 出どころ: docs/superpowers/specs/2026-08-03-claude-code-nyuumon-series-design.md §3
+//
+// 🚨 2026-08-05 ボス判断:「全◯回」と総数を名乗らない。
+//   「やることが増えれば8回以上続くので」——先に本数を約束すると、増やしたときに嘘になる。
+//   だから `total` は持たない。画面に出すのは「公開済みが何本か」だけ。
+//   ⚠️ 下の episodes はあくまで**いまの予定**。足してよい。足しても表示の文言は直さなくていい作りにしてある。
 export const NYUUMON = {
   key: 'nyuumon',
   label: '非ITのClaude Code入門',
   path: '/blog/nyuumon/',
-  total: 8,
-  lead: 'IT経験ゼロの48歳が、Claude Codeを入れるところから順に書いていく全8回。',
+  lead: 'IT経験ゼロの48歳が、Claude Codeを入れるところから順に書いていくシリーズ。',
   // 2026-08-04 ボス判断で順番を入れ替えた。「もっと初歩的なところからでいい。
   // CLAUDE.mdとかそういうところ」→ CLAUDE.md を4番目から3番目へ前倒し。
   // ⚠️ 第2回だけは動かせない。第1回の本文と図解24で「次の記事(操作の基本)」と読者に約束ずみ。

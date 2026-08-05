@@ -34,15 +34,11 @@ const next = at(episode + 1);
 	place === 'top' ? (
 		<p class="series-top">
 			<a href={NYUUMON.path}>{NYUUMON.label}</a>
-			<span class="count">
-				第{episode}回 / 全{NYUUMON.total}回
-			</span>
+			<span class="count">第{episode}回</span>
 		</p>
 	) : (
 		<nav class="series-bottom" aria-label="シリーズの前後">
-			<p class="series-bottom-head">
-				{NYUUMON.label}(全{NYUUMON.total}回)
-			</p>
+			<p class="series-bottom-head">{NYUUMON.label}</p>
 			<ul>
 				{prev &&
 					(prev.href ? (
@@ -85,9 +81,7 @@ const next = at(episode + 1);
 						</li>
 					))}
 			</ul>
-			<a class="toc" href={NYUUMON.path}>
-				シリーズの目次を見る(全{NYUUMON.total}回)
-			</a>
+			<a class="toc" href={NYUUMON.path}>シリーズの目次を見る</a>
 		</nav>
 	)
 }
