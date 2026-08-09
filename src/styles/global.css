@@ -558,6 +558,14 @@ code {
 	border-radius: 4px;
 	font-size: 0.9em;
 }
+/* 🚨 見出し(h2)は濃い帯＋白文字。その中に `コード` が入ると、上の code 規則で
+   明るい背景(#f1eee5)だけが付き、文字色は白のまま継承されるので読めなくなる。
+   2026-08-09にボスが発見(「白すぎて中に何書いてるかわからない」)。
+   帯の上では、下地を透かして文字色を黄色に戻す。 */
+.prose h2 code {
+	background-color: rgba(255, 255, 255, 0.16);
+	color: #ffd970;
+}
 pre {
 	padding: 1.5em;
 	border-radius: 10px;
