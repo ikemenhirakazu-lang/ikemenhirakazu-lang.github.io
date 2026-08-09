@@ -50,7 +50,7 @@ export const NYUUMON = {
   episodes: [
     { n: 1, title: '入れて、動かすまで', slug: 'nyuumon/claude-code-hajimekata' },
     { n: 2, title: '操作の基本', slug: 'nyuumon/claude-code-kyoka' },
-    { n: 3, title: 'CLAUDE.md(毎回読ませる紙)' },
+    { n: 3, title: 'CLAUDE.md(毎回読ませる紙)', slug: 'nyuumon/claude-md' },
     { n: 4, title: 'フォルダと会話の分け方' },
     // 2026-08-05 ボス希望で追加。「コマンドの回は作りたいと思ってたよ」
     // 本人が知っているのは /context と /compact の2つだけ。公式の一覧は50個以上ある。
